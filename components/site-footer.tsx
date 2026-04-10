@@ -5,10 +5,10 @@ import { siteMeta } from "@/lib/constants";
 import { PAGE_SECTION_ITEMS } from "@/lib/page-nav";
 
 const navLinkClass =
-  "text-sm text-stone-400 transition hover:text-teal-400 dark:text-stone-500 dark:hover:text-teal-300";
+  "text-sm text-stone-600 transition hover:text-teal-800 dark:text-stone-400 dark:hover:text-teal-400";
 
 const iconLinkClass =
-  "inline-flex size-9 items-center justify-center rounded-lg border border-stone-600/90 text-stone-400 transition hover:border-teal-500/60 hover:bg-stone-800/50 hover:text-teal-300";
+  "inline-flex size-9 items-center justify-center rounded-lg border border-stone-400/85 text-stone-600 transition hover:border-teal-600/70 hover:bg-white/70 hover:text-teal-900 dark:border-stone-600/90 dark:text-stone-400 dark:hover:border-teal-500/60 dark:hover:bg-stone-800/50 dark:hover:text-teal-300";
 
 export async function SiteFooter() {
   const year = new Date().getFullYear();
@@ -18,7 +18,7 @@ export async function SiteFooter() {
 
   return (
     <footer
-      className="border-t border-stone-200/80 bg-stone-950 text-stone-300 dark:border-stone-800/90"
+      className="border-t border-stone-300/80 bg-gradient-to-b from-stone-200/90 to-stone-300/50 text-stone-700 dark:border-stone-800/90 dark:from-stone-950 dark:to-stone-900 dark:text-stone-300"
       aria-labelledby="footer-heading"
     >
       <div className="mx-auto max-w-7xl px-6 pb-[max(6rem,env(safe-area-inset-bottom))] pt-14 sm:px-8 sm:pb-24 sm:pt-16">
@@ -29,11 +29,11 @@ export async function SiteFooter() {
             </p>
             <Link
               href="/"
-              className="font-serif text-lg font-semibold tracking-tight text-white"
+              className="font-serif text-lg font-semibold tracking-tight text-stone-900 dark:text-white"
             >
               {siteMeta.name}
             </Link>
-            <p className="mt-2 max-w-sm text-sm leading-relaxed text-stone-400">
+            <p className="mt-2 max-w-sm text-sm leading-relaxed text-stone-600 dark:text-stone-400">
               {tHero("role")}
             </p>
           </div>
@@ -82,13 +82,13 @@ export async function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-2 border-t border-stone-800/90 pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-stone-500">
+        <div className="mt-12 flex flex-col gap-2 border-t border-stone-400/50 pt-8 dark:border-stone-800/90 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs text-stone-600 dark:text-stone-500">
             {tFooter("rights", { year, name: siteMeta.name })}
           </p>
           <a
             href={`mailto:${siteMeta.email}`}
-            className="text-xs text-stone-500 transition hover:text-teal-400 sm:text-end"
+            className="text-xs text-stone-600 transition hover:text-teal-800 dark:text-stone-500 dark:hover:text-teal-400 sm:text-end"
           >
             {siteMeta.email}
           </a>
