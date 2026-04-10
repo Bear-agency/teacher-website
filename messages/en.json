@@ -1,0 +1,256 @@
+{
+  "Metadata": {
+    "description": "Educator and software architect — teaching algorithms, data structures, and databases alongside production-grade full-stack engineering.",
+    "roleSuffix": "Educator & Architect",
+    "courseworkTitle": "{title} · Coursework",
+    "subjectTitle": "{title} · Teaching"
+  },
+  "Nav": {
+    "top": "Intro",
+    "technologies": "Technologies",
+    "subjects": "Teaching focus",
+    "courseworks": "Courseworks",
+    "projects": "Personal projects",
+    "experience": "Experience & education"
+  },
+  "SectionContext": {
+    "top": {
+      "title": "Intro",
+      "body": "Who I am, how I work with teams and stakeholders, and the stack I use to ship reliable full-stack systems."
+    },
+    "subjects": {
+      "title": "Teaching focus",
+      "body": "Core modules—algorithms, data structures, and databases—framed for engineers who need durable intuition, not cramming."
+    },
+    "courseworks": {
+      "title": "Courseworks",
+      "body": "Guided project lines with deep-dive pages: architecture, objectives, and repos you can fork and stress-test."
+    },
+    "technologies": {
+      "title": "Technologies",
+      "body": "Languages, frameworks, cloud, and integration patterns I use in production and reference in the classroom."
+    },
+    "projects": {
+      "title": "Personal projects",
+      "body": "Side builds and tooling that often become workshop material—separate from formal courseworks."
+    },
+    "experience": {
+      "title": "Experience & education",
+      "body": "Roles by year (expand to read), then degrees—same narrative as the CV, tuned for scanning."
+    }
+  },
+  "Sidebar": {
+    "thisSection": "This section",
+    "allSections": "All sections",
+    "drawerTitle": "On this page",
+    "openMenu": "Open page sections menu",
+    "closeMenu": "Close menu"
+  },
+  "Hero": {
+    "eyebrow": "Modern engineering education",
+    "role": "Full-stack educator & architect",
+    "bio": "I teach durable computer science foundations and ship production systems—bridging classroom clarity with how teams actually build, integrate, and operate software.",
+    "detail": "Delivery focus: scalable services, secure integrations (OAuth, SSO, enterprise APIs), and real-time features where latency matters. Stack craft: React, Next.js, Node (Express/NestJS), AWS, and data stores tuned for production load—plus teaching hexagonal and event-driven design."
+  },
+  "TechCategories": {
+    "languages": "Languages",
+    "application": "Application stack",
+    "data-platform": "Data & platform",
+    "delivery-quality": "Delivery & quality"
+  },
+  "TechGroups": {
+    "ui": "UI & client",
+    "services": "APIs & services",
+    "databases": "Databases & caches",
+    "platform": "Cloud & delivery",
+    "architecture": "Architecture & patterns",
+    "integrations": "Identity & integrations",
+    "testing": "Testing"
+  },
+  "TechnologiesSection": {
+    "heading": "Technologies",
+    "lead": "Tools and stacks I teach against and ship with—grouped for quick scanning. Edit lists in lib/constants.ts."
+  },
+  "Subjects": {
+    "heading": "Core teaching areas",
+    "lead": "Structured depth across foundations that compound—each module pairs short theory with runnable exercises. Open a subject for a full overview, topics, and outcomes.",
+    "viewCta": "View subject",
+    "detail": {
+      "algorithms": {
+        "title": "Algorithms",
+        "summary": "Complexity, correctness, and the patterns that keep large systems predictable—from sorting and search to graphs and dynamic programming.",
+        "overview": "We build **intuition for cost models** (time and space), learn to argue **correctness**, and practice choosing structures and algorithms that match real constraints—not textbook trivia.\n\nLabs stress **implementation + analysis**: tracing invariants, benchmarking, and spotting when an asymptotic win is drowned out by constants or I/O.",
+        "highlights": [
+          "Asymptotic notation and solving recurrences",
+          "Sorting, searching, and selection on arrays and trees",
+          "Graph representations, traversals, shortest paths, spanning trees",
+          "Greedy, divide & conquer, and dynamic programming patterns",
+          "Heuristics for interviews and production debugging"
+        ],
+        "outcomes": [
+          "Estimate and compare algorithmic costs for non-trivial inputs",
+          "Select appropriate data structures for a given access pattern",
+          "Implement core algorithms with clear invariants and tests",
+          "Communicate trade-offs to peers and stakeholders"
+        ]
+      },
+      "data-structures": {
+        "title": "Data structures",
+        "summary": "How memory layout, access patterns, and persistence choices shape performance—from arrays and lists to trees, heaps, and hash-based designs.",
+        "overview": "We connect **abstract interfaces** (list, map, priority queue) to **concrete representations** and the hardware realities they imply: cache locality, allocation churn, and iteration cost.\n\nWhere useful we touch **on-disk** structures at a high level (B-trees, LSM ideas) so database modules later feel grounded.",
+        "highlights": [
+          "Arrays, linked structures, stacks, queues, deques",
+          "Trees, BSTs, balancing intuition, heaps",
+          "Hash tables: collisions, load factor, when they fail gracefully",
+          "Amortized analysis and when to trust it",
+          "Choosing structures for APIs you design yourself"
+        ],
+        "outcomes": [
+          "Match structure choice to read/write/iterate workloads",
+          "Reason about worst, average, and amortized costs",
+          "Implement and test core structures from scratch",
+          "Read real-world stack traces and performance profiles with structure in mind"
+        ]
+      },
+      "databases": {
+        "title": "Databases",
+        "summary": "Relational modeling, SQL fluency, transactions, and how storage engines and indexes behave under load.",
+        "overview": "We treat the database as a **system**, not a black box: schemas and constraints, query planning basics, isolation levels, and the failure modes teams hit in production.\n\nExercises blend **SQL** with **schema design** and **operational hygiene** (migrations, observability, safe rollout patterns).",
+        "highlights": [
+          "Relational modeling, normalization, and pragmatic denormalization",
+          "SQL: joins, aggregates, subqueries, window functions (intro)",
+          "Transactions, isolation, locks, and common anomalies",
+          "Indexes: B-tree intuition, covering indexes, EXPLAIN-oriented tuning",
+          "Migrations, backups, and basic replication concepts"
+        ],
+        "outcomes": [
+          "Design schemas that enforce invariants at the right layer",
+          "Write and refactor SQL for clarity and predictable plans",
+          "Choose isolation strategies for a given consistency need",
+          "Collaborate with backend teams on performance and migration safety"
+        ]
+      }
+    }
+  },
+  "Courseworks": {
+    "heading": "Courseworks",
+    "lead": "Active project lines you can fork, break, and rebuild—each with a dedicated deep-dive and learning objectives.",
+    "openDeepDive": "Open deep-dive",
+    "items": {
+      "hexagonal-order-service": {
+        "title": "Hexagonal order service",
+        "tagline": "Ports, adapters, and testable domains",
+        "excerpt": "A teaching service that keeps business rules in the center while HTTP, SQL, and messaging stay at the edges.",
+        "overview": "Students implement an **order-taking flow** where the domain never imports framework code. **Ports** describe use cases; **adapters** translate to HTTP handlers, repositories, and message publishers.\n\nThe goal is fluency in **dependency direction**, **fakes in tests**, and **swap-friendly infrastructure**—the same skills that keep large codebases refactorable.",
+        "objectives": [
+          "Separate domain logic from transport and persistence adapters",
+          "Design ports that stay stable as infrastructure changes",
+          "Test use cases with in-memory fakes before wiring real IO",
+          "Document boundaries with OpenAPI and clear module ownership"
+        ],
+        "practiceTitle": "Try this first",
+        "practicePrompt": "Sketch the place-order port and two adapters (HTTP + Postgres) before writing any framework glue. List three invariants the domain must enforce even if the database is swapped."
+      },
+      "event-driven-inventory": {
+        "title": "Event-driven inventory",
+        "tagline": "Streams, idempotency, and projections",
+        "excerpt": "Inventory changes modeled as events—consumers, retries, and exactly-once illusions done responsibly.",
+        "overview": "We walk a **stock movement pipeline** where multiple services react to the same facts. Students implement **idempotent consumers**, **versioned events**, and a **read model projector** that can be rebuilt.\n\nEmphasis is on **operational reality**: at-least-once delivery, poison messages, observability, and backpressure—not just happy-path diagrams.",
+        "objectives": [
+          "Model domain events with explicit schemas and versioning",
+          "Implement safe retries and idempotency keys",
+          "Build and rebuild projections from an event log",
+          "Instrument consumers for lag, failures, and poison queues"
+        ],
+        "practiceTitle": "Try this first",
+        "practicePrompt": "Pick one inventory adjustment and write the event schema (JSON or Avro-style). Then list every consumer that must react and what happens if the same event is delivered twice."
+      },
+      "fullstack-assessment-platform": {
+        "title": "Full-stack assessment platform",
+        "tagline": "BFF, async grading, and observable pipelines",
+        "excerpt": "Submit answers fast, grade in the background, and keep the UI honest about progress—Next.js plus a worker-friendly backend.",
+        "overview": "The UI collects submissions while **grading jobs** run asynchronously. Students implement a **BFF** that validates and enqueues work, workers that grade deterministically, and **telemetry** that makes bottlenecks visible.\n\nWe stress **API contracts**, **status endpoints**, and **user-visible state machines** so partial failures are understandable.",
+        "objectives": [
+          "Design APIs that separate submission from long-running work",
+          "Implement workers with retries, dead-letter handling, and metrics",
+          "Expose honest progress and error states in the UI",
+          "Trace requests across services with correlation IDs"
+        ],
+        "practiceTitle": "Try this first",
+        "practicePrompt": "Map the submit → enqueue → grade → notify sequence. Identify three failure points and how the UI should represent each without lying about completion."
+      }
+    }
+  },
+  "CourseworkPage": {
+    "back": "Back to courseworks",
+    "label": "Coursework deep-dive",
+    "overview": "Project overview",
+    "stack": "Tech stack",
+    "objectives": "Learning objectives",
+    "github": "View on GitHub"
+  },
+  "SubjectPage": {
+    "back": "Back to subjects",
+    "eyebrow": "Teaching area · {name}",
+    "overview": "Overview",
+    "topics": "What we cover",
+    "outcomes": "Learning outcomes"
+  },
+  "Projects": {
+    "heading": "Personal projects",
+    "lead": "Side work and tooling that feeds the curriculum—distinct from formal courseworks, but often reused in exercises.",
+    "items": {
+      "arch-kata-cli": {
+        "title": "Architecture kata CLI",
+        "description": "A small CLI for running repeatable architecture katas—constraints, timers, and lightweight scoring for workshop groups."
+      },
+      "lecture-notes-publisher": {
+        "title": "Lecture notes publisher",
+        "description": "Next.js + MDX pipeline for publishing course notes with previews, syntax highlighting, and export-friendly layouts."
+      },
+      "latency-lab": {
+        "title": "Latency lab",
+        "description": "Dockerized playground for tracing, metrics, and comparing latency under synthetic load—used to teach observability basics."
+      }
+    }
+  },
+  "WorkHistory": {
+    "heading": "Work history",
+    "lead": "Timeline grouped by calendar year—expand a year to see every role that was active then, with stack and contributions from {name}'s CV.",
+    "expandAll": "Expand all years",
+    "collapseAll": "Collapse all",
+    "techStack": "Tech stack",
+    "teamSize": "Team size: {size}",
+    "keyContributions": "Key contributions",
+    "responsibilities": "Responsibilities",
+    "accomplishments": "Accomplishments",
+    "role": "role",
+    "roles": "roles",
+    "showDetail": "Show detail",
+    "hideDetail": "Hide detail",
+    "education": "Education"
+  },
+  "Footer": {
+    "heading": "Site footer",
+    "rights": "© {year} {name}. All rights reserved."
+  },
+  "Social": {
+    "connect": "Connect",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "email": "Email"
+  },
+  "Language": {
+    "switchToEn": "English",
+    "switchToUk": "Українська",
+    "label": "Language"
+  },
+  "NotFound": {
+    "courseworkTitle": "Coursework not found",
+    "courseworkBody": "That slug is not in the catalog. Return home and pick a project from the courseworks gallery.",
+    "subjectTitle": "Subject not found",
+    "subjectBody": "That teaching area is not in the catalog.",
+    "backHome": "← Back home",
+    "backSubjects": "← Back to subjects"
+  }
+}
