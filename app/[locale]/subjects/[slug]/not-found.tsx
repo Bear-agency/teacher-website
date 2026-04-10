@@ -16,7 +16,7 @@ export default function SubjectNotFound() {
       </p>
       <Link
         href={{ pathname: "/", hash: "subjects" }}
-        className="mt-8 text-sm font-medium text-indigo-600 dark:text-indigo-400"
+        className="mt-8 text-sm font-medium text-teal-600 dark:text-teal-400"
       >
         {t("backSubjects")}
       </Link>

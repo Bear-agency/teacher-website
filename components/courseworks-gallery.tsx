@@ -20,7 +20,7 @@ export async function CourseworksGallery() {
             <div>
               <h2
                 id="courseworks-heading"
-                className="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white"
+                className="font-serif text-2xl font-semibold tracking-tight text-stone-900 dark:text-stone-50"
               >
                 {t("heading")}
               </h2>
@@ -36,27 +36,27 @@ export async function CourseworksGallery() {
               <li>
                 <Link
                   href={`/courseworks/${project.slug}`}
-                  className="group flex h-full flex-col rounded-2xl border border-slate-200/90 bg-transparent p-6 shadow-sm transition hover:border-indigo-400/50 hover:shadow-md dark:border-slate-800 dark:hover:border-indigo-500/40"
+                  className="group flex h-full flex-col rounded-2xl border border-slate-200/90 bg-transparent p-6 shadow-sm transition hover:border-teal-400/50 hover:shadow-md dark:border-slate-800 dark:hover:border-teal-500/40"
                 >
                   <div className="flex items-start justify-between gap-3">
-                    <div className="flex size-11 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-700 ring-1 ring-emerald-500/25 dark:text-emerald-400">
+                    <div className="flex size-11 items-center justify-center rounded-xl bg-teal-500/10 text-teal-700 ring-1 ring-teal-500/25 dark:text-teal-400">
                       <Layers className="size-5" aria-hidden />
                     </div>
                     <ArrowUpRight
-                      className="size-5 shrink-0 text-slate-400 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-indigo-600 dark:group-hover:text-indigo-400"
+                      className="size-5 shrink-0 text-slate-400 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-teal-600 dark:group-hover:text-teal-400"
                       aria-hidden
                     />
                   </div>
                   <h3 className="mt-5 text-lg font-semibold tracking-tight text-slate-900 dark:text-white">
                     {project.title}
                   </h3>
-                  <p className="mt-1 text-xs font-medium uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+                  <p className="mt-1 text-xs font-medium uppercase tracking-wider text-teal-600 dark:text-teal-400">
                     {project.tagline}
                   </p>
                   <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
                     {project.excerpt}
                   </p>
-                  <span className="mt-6 inline-flex items-center text-sm font-medium text-indigo-600 dark:text-indigo-400">
+                  <span className="mt-6 inline-flex items-center text-sm font-medium text-teal-600 dark:text-teal-400">
                     {t("openDeepDive")}
                     <span className="ml-1 transition group-hover:translate-x-0.5">
                       →

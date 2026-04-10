@@ -39,7 +39,7 @@ export default async function SubjectPage({ params }: Props) {
         <ScrollReveal>
           <Link
             href={{ pathname: "/", hash: "subjects" }}
-            className="inline-flex items-center gap-2 text-sm font-medium text-indigo-600 transition hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
+            className="inline-flex items-center gap-2 text-sm font-medium text-teal-600 transition hover:text-teal-500 dark:text-teal-400 dark:hover:text-teal-300"
           >
             <ArrowLeft className="size-4" aria-hidden />
             {t("back")}
@@ -47,10 +47,10 @@ export default async function SubjectPage({ params }: Props) {
         </ScrollReveal>
 
         <ScrollReveal delay={0.05} className="mt-10">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-indigo-600 dark:text-indigo-400">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-teal-600 dark:text-teal-400">
             {t("eyebrow", { name: siteMeta.name })}
           </p>
-          <h1 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
+          <h1 className="font-serif mt-3 text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl dark:text-stone-50">
             {subject.title}
           </h1>
           <p className="mt-3 text-base leading-relaxed text-slate-600 dark:text-slate-400">
@@ -81,7 +81,7 @@ export default async function SubjectPage({ params }: Props) {
               >
                 {t("topics")}
               </h2>
-              <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-slate-600 marker:text-indigo-600 dark:text-slate-400 dark:marker:text-indigo-400">
+              <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-slate-600 marker:text-teal-600 dark:text-slate-400 dark:marker:text-teal-400">
                 {subject.highlights.map((line) => (
                   <li key={line}>{line}</li>
                 ))}
@@ -98,7 +98,7 @@ export default async function SubjectPage({ params }: Props) {
                 >
                   {t("outcomes")}
                 </h2>
-                <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm leading-relaxed text-slate-600 marker:text-emerald-600 dark:text-slate-400 dark:marker:text-emerald-500">
+                <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm leading-relaxed text-slate-600 marker:text-teal-600 dark:text-slate-400 dark:marker:text-teal-500">
                   {subject.outcomes.map((line) => (
                     <li key={line}>{line}</li>
                   ))}

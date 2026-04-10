@@ -25,7 +25,7 @@ export async function SubjectsSection() {
       <ScrollReveal>
         <h2
           id="subjects-heading"
-          className="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white"
+          className="font-serif text-2xl font-semibold tracking-tight text-stone-900 dark:text-stone-50"
         >
           {t("heading")}
         </h2>
@@ -41,14 +41,14 @@ export async function SubjectsSection() {
               <li>
                 <Link
                   href={`/subjects/${subject.id}`}
-                  className="group flex h-full flex-col rounded-2xl border border-slate-200/90 bg-transparent p-6 shadow-sm transition hover:border-indigo-300/60 hover:shadow-md dark:border-slate-800 dark:hover:border-indigo-500/30"
+                  className="group flex h-full flex-col rounded-2xl border border-slate-200/90 bg-transparent p-6 shadow-sm transition hover:border-teal-300/60 hover:shadow-md dark:border-slate-800 dark:hover:border-teal-500/30"
                 >
                   <div className="flex items-start justify-between gap-3">
-                    <div className="flex size-12 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-700 ring-1 ring-indigo-500/20 dark:text-indigo-300">
+                    <div className="flex size-12 items-center justify-center rounded-xl bg-teal-500/10 text-teal-700 ring-1 ring-teal-500/20 dark:text-teal-300">
                       <Icon className="size-6" aria-hidden />
                     </div>
                     <ArrowUpRight
-                      className="size-5 shrink-0 text-slate-400 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-indigo-600 dark:group-hover:text-indigo-400"
+                      className="size-5 shrink-0 text-slate-400 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-teal-600 dark:group-hover:text-teal-400"
                       aria-hidden
                     />
                   </div>
@@ -58,7 +58,7 @@ export async function SubjectsSection() {
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
                     {subject.summary}
                   </p>
-                  <span className="mt-5 text-sm font-medium text-indigo-600 dark:text-indigo-400">
+                  <span className="mt-5 text-sm font-medium text-teal-600 dark:text-teal-400">
                     {t("viewCta")}
                     <span className="ml-1 transition group-hover:translate-x-0.5">
                       →

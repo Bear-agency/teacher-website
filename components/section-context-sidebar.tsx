@@ -51,11 +51,11 @@ function SectionContextPanelBody({
       <div className="shrink-0 border-b border-slate-200/80 p-6 dark:border-slate-800/80">
         <p
           id={`${idPrefix}-heading`}
-          className="text-[11px] font-semibold uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-400"
+          className="text-[11px] font-semibold uppercase tracking-[0.2em] text-teal-600 dark:text-teal-400"
         >
           {tSidebar("thisSection")}
         </p>
-        <div className="mt-3 border-l-2 border-indigo-500/45 pl-4 dark:border-indigo-400/40">
+        <div className="mt-3 border-l-2 border-teal-500/45 pl-4 dark:border-teal-400/40">
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={activeId}
@@ -64,7 +64,7 @@ function SectionContextPanelBody({
               exit={{ opacity: 0, y: -4 }}
               transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
             >
-              <h2 className="text-lg font-semibold leading-snug tracking-tight text-slate-900 dark:text-white">
+              <h2 className="font-serif text-lg font-semibold leading-snug tracking-tight text-stone-900 dark:text-stone-50">
                 {title}
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
@@ -95,7 +95,7 @@ function SectionContextPanelBody({
                   onClick={onNavigate}
                   className={`${navLinkBase} ${
                     isActive
-                      ? "bg-indigo-500/15 font-medium text-indigo-800 dark:bg-indigo-500/20 dark:text-indigo-200"
+                      ? "bg-teal-500/15 font-medium text-teal-800 dark:bg-teal-500/20 dark:text-teal-200"
                       : "text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800/80 dark:hover:text-white"
                   }`}
                   aria-current={isActive ? "location" : undefined}
@@ -180,7 +180,7 @@ export function SectionContextSidebar({ children }: Props) {
       <button
         type="button"
         onClick={() => setMenuOpen(true)}
-        className="fixed right-4 top-[max(1rem,env(safe-area-inset-top))] z-[60] flex size-12 items-center justify-center rounded-xl border border-slate-200/90 bg-white/95 text-slate-800 shadow-lg shadow-slate-900/10 backdrop-blur-md transition hover:border-indigo-300 hover:text-indigo-700 lg:hidden dark:border-slate-700/90 dark:bg-slate-950/95 dark:text-slate-100 dark:hover:border-indigo-500 dark:hover:text-indigo-300"
+        className="fixed right-4 top-[max(1rem,env(safe-area-inset-top))] z-[60] flex size-12 items-center justify-center rounded-xl border border-slate-200/90 bg-white/95 text-slate-800 shadow-lg shadow-slate-900/10 backdrop-blur-md transition hover:border-teal-300 hover:text-teal-700 lg:hidden dark:border-slate-700/90 dark:bg-slate-950/95 dark:text-slate-100 dark:hover:border-teal-500 dark:hover:text-teal-300"
         aria-label={tSidebar("openMenu")}
         aria-expanded={menuOpen}
         aria-controls="mobile-section-drawer"

@@ -1,7 +1,7 @@
 {
   "Metadata": {
-    "description": "Educator and software architect — teaching algorithms, data structures, and databases alongside production-grade full-stack engineering.",
-    "roleSuffix": "Educator & Architect",
+    "description": "{name} — university-level CS teaching (algorithms, data structures, databases) and hands-on full-stack engineering. Work history and public profiles linked on-site.",
+    "roleSuffix": "Educator & engineer",
     "courseworkTitle": "{title} · Coursework",
     "subjectTitle": "{title} · Teaching"
   },
@@ -47,10 +47,14 @@
     "closeMenu": "Close menu"
   },
   "Hero": {
-    "eyebrow": "Modern engineering education",
-    "role": "Full-stack educator & architect",
-    "bio": "I teach durable computer science foundations and ship production systems—bridging classroom clarity with how teams actually build, integrate, and operate software.",
-    "detail": "Delivery focus: scalable services, secure integrations (OAuth, SSO, enterprise APIs), and real-time features where latency matters. Stack craft: React, Next.js, Node (Express/NestJS), AWS, and data stores tuned for production load—plus teaching hexagonal and event-driven design."
+    "eyebrow": "Computer science teaching · production engineering",
+    "role": "Lecturer and full-stack software engineer",
+    "bio": "I teach algorithms, data structures, and databases at university level, and I build the same kind of systems I talk about in class: APIs, integrations, and operational concerns included—not slide-deck-only examples.",
+    "detail": "Recent work spans scalable services, OAuth and enterprise SSO, Jira and third-party APIs, and real-time interfaces where latency matters. In the classroom I emphasize measurable trade-offs, testing, and architectures (including hexagonal and event-driven) that survive contact with production.",
+    "proofLabel": "Verify it’s the same person",
+    "proofHint": "These links go to the public profiles I use professionally. They match the employment and education timeline in the experience section below.",
+    "proofGithub": "GitHub",
+    "proofLinkedIn": "LinkedIn"
   },
   "TechCategories": {
     "languages": "Languages",
@@ -70,12 +74,12 @@
   },
   "TechnologiesSection": {
     "heading": "Technologies",
-    "lead": "Tools and stacks I teach against and ship with—grouped for quick scanning. Edit lists in lib/constants.ts.",
-    "projectTooltip": "Used in: {project}"
+    "lead": "Stacks from real delivery work and from what I assign in coursework—grouped so you can scan without marketing fluff.",
+    "projectsTooltipIntro": "Used in:"
   },
   "Subjects": {
     "heading": "Core teaching areas",
-    "lead": "Structured depth across foundations that compound—each module pairs short theory with runnable exercises. Open a subject for a full overview, topics, and outcomes.",
+    "lead": "Core university modules with runnable exercises—not slide-only summaries. Open a subject for topics, outcomes, and how sessions are structured.",
     "viewCta": "View subject",
     "detail": {
       "algorithms": {
@@ -218,7 +222,7 @@
   },
   "WorkHistory": {
     "heading": "Work history",
-    "lead": "Timeline grouped by calendar year—expand a year to see every role that was active then, with stack and contributions from {name}'s CV.",
+    "lead": "By calendar year: expand a year for roles, tech stack, and bullets aligned with {name}'s résumé. Degrees and language levels are listed after employment.",
     "expandAll": "Expand all years",
     "collapseAll": "Collapse all",
     "techStack": "Tech stack",

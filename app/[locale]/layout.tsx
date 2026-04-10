@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Source_Code_Pro, Source_Sans_3, Source_Serif_4 } from "next/font/google";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -9,14 +9,22 @@ import { SocialBar } from "@/components/social-bar";
 import { routing } from "@/i18n/routing";
 import { siteMeta } from "@/lib/constants";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin", "cyrillic"],
+const sourceSans = Source_Sans_3({
+  variable: "--font-source-sans",
+  subsets: ["latin", "cyrillic", "cyrillic-ext"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin", "cyrillic"],
+const sourceSerif = Source_Serif_4({
+  variable: "--font-source-serif",
+  subsets: ["latin", "cyrillic", "cyrillic-ext"],
+  display: "swap",
+});
+
+const sourceCode = Source_Code_Pro({
+  variable: "--font-source-mono",
+  subsets: ["latin", "cyrillic", "cyrillic-ext"],
+  display: "swap",
 });
 
 export function generateStaticParams() {
@@ -35,7 +43,7 @@ export async function generateMetadata({
       default: `${siteMeta.name} · ${t("roleSuffix")}`,
       template: `%s · ${siteMeta.name}`,
     },
-    description: t("description"),
+    description: t("description", { name: siteMeta.name }),
   };
 }
 
@@ -56,9 +64,9 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html
       lang={locale}
-      className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth bg-transparent antialiased`}
+      className={`${sourceSans.variable} ${sourceSerif.variable} ${sourceCode.variable} h-full scroll-smooth bg-transparent antialiased`}
     >
-      <body className="min-h-full bg-transparent font-sans text-slate-900 dark:text-slate-100">
+      <body className="min-h-full bg-transparent font-sans text-stone-900 dark:text-stone-100">
         <NextIntlClientProvider messages={messages}>
           <PageBackground />
           <div className="relative z-10 flex min-h-full flex-col">

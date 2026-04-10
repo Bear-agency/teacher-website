@@ -25,7 +25,7 @@ function EntryCard({ entry }: { entry: WorkHistoryEntry }) {
         <h3 className="text-base font-semibold text-slate-900 dark:text-white">
           {entry.company}
         </h3>
-        <span className="font-mono text-xs text-indigo-600 dark:text-indigo-400">
+        <span className="font-mono text-xs text-teal-600 dark:text-teal-400">
           {entry.rangeLabel}
         </span>
       </div>
@@ -60,12 +60,12 @@ function EntryCard({ entry }: { entry: WorkHistoryEntry }) {
       ) : null}
       {bullets.length > 0 ? (
         <div className="mt-4">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-700/90 dark:text-emerald-400/90">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-teal-700/90 dark:text-teal-400/90">
             {entry.contributions
               ? t("keyContributions")
               : t("responsibilities")}
           </p>
-          <ul className="mt-2 list-disc space-y-1.5 pl-4 text-sm leading-relaxed text-slate-600 marker:text-indigo-500 dark:text-slate-400 dark:marker:text-indigo-400">
+          <ul className="mt-2 list-disc space-y-1.5 pl-4 text-sm leading-relaxed text-slate-600 marker:text-teal-500 dark:text-slate-400 dark:marker:text-teal-400">
             {bullets.map((line) => (
               <li key={line}>{line}</li>
             ))}
@@ -74,10 +74,10 @@ function EntryCard({ entry }: { entry: WorkHistoryEntry }) {
       ) : null}
       {extraAccomplishments && extraAccomplishments.length > 0 ? (
         <div className="mt-4">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-400">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-teal-600 dark:text-teal-400">
             {t("accomplishments")}
           </p>
-          <ul className="mt-2 list-disc space-y-1.5 pl-4 text-sm leading-relaxed text-slate-600 marker:text-emerald-600 dark:text-slate-400 dark:marker:text-emerald-500">
+          <ul className="mt-2 list-disc space-y-1.5 pl-4 text-sm leading-relaxed text-slate-600 marker:text-teal-600 dark:text-slate-400 dark:marker:text-teal-500">
             {extraAccomplishments.map((line) => (
               <li key={line}>{line}</li>
             ))}
@@ -118,13 +118,13 @@ export function WorkHistorySection() {
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
         <ScrollReveal>
           <div className="flex flex-wrap items-start gap-4">
-            <div className="flex size-12 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-700 ring-1 ring-indigo-500/20 dark:text-indigo-300">
+            <div className="flex size-12 items-center justify-center rounded-xl bg-teal-500/10 text-teal-700 ring-1 ring-teal-500/20 dark:text-teal-300">
               <TreeDeciduous className="size-6" aria-hidden />
             </div>
             <div className="min-w-0 flex-1">
               <h2
                 id="experience-heading"
-                className="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white"
+                className="font-serif text-2xl font-semibold tracking-tight text-stone-900 dark:text-stone-50"
               >
                 {t("heading")}
               </h2>
@@ -135,7 +135,7 @@ export function WorkHistorySection() {
                 <button
                   type="button"
                   onClick={expandAll}
-                  className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 transition hover:border-indigo-300 hover:text-indigo-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-indigo-500"
+                  className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 transition hover:border-teal-300 hover:text-teal-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-teal-500"
                 >
                   {t("expandAll")}
                 </button>
@@ -163,7 +163,7 @@ export function WorkHistorySection() {
 
         <div className="relative mt-14">
           <div
-            className="absolute bottom-0 left-[15px] top-0 w-px bg-gradient-to-b from-indigo-400/50 via-slate-300 to-transparent dark:from-indigo-500/40 dark:via-slate-700"
+            className="absolute bottom-0 left-[15px] top-0 w-px bg-gradient-to-b from-teal-400/50 via-slate-300 to-transparent dark:from-teal-500/40 dark:via-slate-700"
             aria-hidden
           />
           <ol className="relative space-y-2">
@@ -174,7 +174,7 @@ export function WorkHistorySection() {
                 <ScrollReveal key={year} delay={0.04 * Math.min(idx, 8)}>
                   <li className="relative pl-10">
                     <span
-                      className="absolute left-[10px] top-5 size-3 rounded-full border-2 border-white bg-indigo-500 shadow dark:border-slate-950 dark:bg-indigo-400"
+                      className="absolute left-[10px] top-5 size-3 rounded-full border-2 border-white bg-teal-500 shadow dark:border-slate-950 dark:bg-teal-400"
                       aria-hidden
                     />
                     <div className="rounded-2xl border border-slate-200/90 dark:border-slate-800">
@@ -193,14 +193,14 @@ export function WorkHistorySection() {
                               duration: 0.2,
                               ease: [0.22, 1, 0.36, 1],
                             }}
-                            className="flex text-indigo-600 dark:text-indigo-400"
+                            className="flex text-teal-600 dark:text-teal-400"
                           >
                             <ChevronRight className="size-5" aria-hidden />
                           </motion.span>
                           <span className="text-lg font-semibold tabular-nums text-slate-900 dark:text-white">
                             {year}
                           </span>
-                          <span className="rounded-full bg-indigo-500/15 px-2.5 py-0.5 text-xs font-medium text-indigo-800 dark:text-indigo-200">
+                          <span className="rounded-full bg-teal-500/15 px-2.5 py-0.5 text-xs font-medium text-teal-800 dark:text-teal-200">
                             {entries.length}{" "}
                             {entries.length === 1 ? t("role") : t("roles")}
                           </span>
@@ -243,7 +243,7 @@ export function WorkHistorySection() {
 
         <ScrollReveal className="mt-16">
           <div className="flex items-center gap-3">
-            <div className="flex size-10 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-700 dark:text-emerald-400">
+            <div className="flex size-10 items-center justify-center rounded-lg bg-teal-500/10 text-teal-700 dark:text-teal-400">
               <GraduationCap className="size-5" aria-hidden />
             </div>
             <h3 className="text-lg font-semibold text-slate-900 dark:text-white">

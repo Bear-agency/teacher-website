@@ -16,13 +16,13 @@ export async function PersonalProjectsSection() {
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
         <ScrollReveal>
           <div className="flex flex-wrap items-start gap-4">
-            <div className="flex size-12 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-700 ring-1 ring-emerald-500/25 dark:text-emerald-400">
+            <div className="flex size-12 items-center justify-center rounded-xl bg-teal-500/10 text-teal-700 ring-1 ring-teal-500/25 dark:text-teal-400">
               <FolderCode className="size-6" aria-hidden />
             </div>
             <div>
               <h2
                 id="projects-heading"
-                className="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white"
+                className="font-serif text-2xl font-semibold tracking-tight text-stone-900 dark:text-stone-50"
               >
                 {t("heading")}
               </h2>
@@ -59,7 +59,7 @@ export async function PersonalProjectsSection() {
                     href={project.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-indigo-600 transition hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
+                    className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-teal-600 transition hover:text-teal-500 dark:text-teal-400 dark:hover:text-teal-300"
                   >
                     {project.linkLabel}
                     <ExternalLink className="size-3.5" aria-hidden />

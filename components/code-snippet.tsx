@@ -27,10 +27,10 @@ export function CodeSnippet({
   }
 
   return (
-    <div className="group relative overflow-hidden rounded-xl border border-slate-200/80 bg-slate-950 shadow-lg shadow-indigo-950/20 dark:border-slate-800 dark:bg-slate-950/80">
+    <div className="group relative overflow-hidden rounded-xl border border-slate-200/80 bg-slate-950 shadow-lg shadow-teal-950/20 dark:border-slate-800 dark:bg-slate-950/80">
       <div className="flex items-center justify-between gap-3 border-b border-slate-800/80 bg-slate-900/50 px-4 py-2.5">
         <div className="flex min-w-0 flex-col">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-400/90">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-teal-400/90">
             {label}
           </span>
           {filename ? (
@@ -42,12 +42,12 @@ export function CodeSnippet({
         <button
           type="button"
           onClick={copy}
-          className="inline-flex shrink-0 items-center gap-1.5 rounded-lg border border-slate-700/80 bg-slate-900 px-2.5 py-1.5 text-xs font-medium text-slate-200 transition hover:border-indigo-500/50 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+          className="inline-flex shrink-0 items-center gap-1.5 rounded-lg border border-slate-700/80 bg-slate-900 px-2.5 py-1.5 text-xs font-medium text-slate-200 transition hover:border-teal-500/50 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
           aria-label="Copy code"
         >
           {copied ? (
             <>
-              <Check className="size-3.5 text-emerald-400" aria-hidden />
+              <Check className="size-3.5 text-teal-400" aria-hidden />
               Copied
             </>
           ) : (

@@ -40,7 +40,7 @@ export default async function CourseworkPage({ params }: Props) {
         <ScrollReveal>
           <Link
             href={{ pathname: "/", hash: "courseworks" }}
-            className="inline-flex items-center gap-2 text-sm font-medium text-indigo-600 transition hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
+            className="inline-flex items-center gap-2 text-sm font-medium text-teal-600 transition hover:text-teal-500 dark:text-teal-400 dark:hover:text-teal-300"
           >
             <ArrowLeft className="size-4" aria-hidden />
             {t("back")}
@@ -48,13 +48,13 @@ export default async function CourseworkPage({ params }: Props) {
         </ScrollReveal>
 
         <ScrollReveal delay={0.05} className="mt-10">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-600 dark:text-emerald-400">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-teal-600 dark:text-teal-400">
             {t("label")}
           </p>
-          <h1 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
+          <h1 className="font-serif mt-3 text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl dark:text-stone-50">
             {project.title}
           </h1>
-          <p className="mt-2 text-base text-indigo-800/90 dark:text-indigo-300/90">
+          <p className="mt-2 text-base text-teal-800/90 dark:text-teal-300/90">
             {project.tagline}
           </p>
         </ScrollReveal>
@@ -119,7 +119,7 @@ export default async function CourseworkPage({ params }: Props) {
               >
                 {t("objectives")}
               </h2>
-              <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm leading-relaxed text-slate-600 marker:text-indigo-600 dark:text-slate-400 dark:marker:text-indigo-400">
+              <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm leading-relaxed text-slate-600 marker:text-teal-600 dark:text-slate-400 dark:marker:text-teal-400">
                 {project.learningObjectives.map((obj) => (
                   <li key={obj}>{obj}</li>
                 ))}
@@ -132,7 +132,7 @@ export default async function CourseworkPage({ params }: Props) {
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 px-5 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-600/25 transition hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 sm:w-auto dark:bg-indigo-500 dark:hover:bg-indigo-400"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-teal-600 px-5 py-3.5 text-sm font-semibold text-white shadow-lg shadow-teal-600/25 transition hover:bg-teal-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 sm:w-auto dark:bg-teal-500 dark:hover:bg-teal-400"
             >
               <Github className="size-[18px]" aria-hidden />
               {t("github")}

@@ -110,16 +110,21 @@ export function buildTechProjectSources(options: {
   return [...fromWork, ...fromCoursework, ...fromPersonal];
 }
 
-export function findExampleProjectLabel(
+/** All distinct projects (work, coursework, personal) that list this technology, in source order */
+export function findMatchingProjectLabels(
   techDisplayLabel: string,
   sources: TechProjectSource[]
-): string | undefined {
+): string[] {
+  const seen = new Set<string>();
+  const out: string[] = [];
   for (const src of sources) {
-    for (const stackEntry of src.stack) {
-      if (stackEntryMatchesChip(techDisplayLabel, stackEntry)) {
-        return src.label;
-      }
+    const matched = src.stack.some((entry) =>
+      stackEntryMatchesChip(techDisplayLabel, entry)
+    );
+    if (matched && !seen.has(src.label)) {
+      seen.add(src.label);
+      out.push(src.label);
     }
   }
-  return undefined;
+  return out;
 }

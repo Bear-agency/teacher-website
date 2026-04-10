@@ -3,13 +3,14 @@ import { getTranslations } from "next-intl/server";
 import { technologyCategories } from "@/lib/constants";
 import {
   buildTechProjectSources,
-  findExampleProjectLabel,
+  findMatchingProjectLabels,
 } from "@/lib/tech-project-hints";
 import type {
   TechnologyCategoryEntry,
   TechnologyCategoryGrouped,
 } from "@/lib/types";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { TechnologyChip } from "@/components/technology-chip";
 
 function isGrouped(
   cat: TechnologyCategoryEntry
@@ -32,10 +33,10 @@ export async function TechnologiesSection() {
     personalTitle: (id) => tProjects(`items.${id}.title`),
   });
 
-  function techTooltip(item: string): string | undefined {
-    const project = findExampleProjectLabel(item, projectSources);
-    if (!project) return undefined;
-    return t("projectTooltip", { project });
+  const tooltipIntro = t("projectsTooltipIntro");
+
+  function techProjects(item: string): string[] {
+    return findMatchingProjectLabels(item, projectSources);
   }
 
   return (
@@ -47,13 +48,13 @@ export async function TechnologiesSection() {
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
         <ScrollReveal>
           <div className="flex flex-wrap items-start gap-4">
-            <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-700 ring-1 ring-indigo-500/20 dark:text-indigo-300">
+            <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-teal-500/10 text-teal-700 ring-1 ring-teal-500/20 dark:text-teal-300">
               <Cpu className="size-6" aria-hidden />
             </div>
             <div className="min-w-0 flex-1">
               <h2
                 id="technologies-heading"
-                className="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white"
+                className="font-serif text-2xl font-semibold tracking-tight text-stone-900 dark:text-stone-50"
               >
                 {t("heading")}
               </h2>
@@ -65,8 +66,8 @@ export async function TechnologiesSection() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.06} className="mt-12">
-          <div className="overflow-hidden rounded-2xl border border-slate-200/90 bg-slate-50/40 shadow-sm dark:border-slate-800/90 dark:bg-slate-950/35 dark:shadow-none">
-            <div className="border-l-2 border-emerald-500/70 dark:border-emerald-500/50">
+          <div className="overflow-visible rounded-2xl border border-stone-200/90 bg-white/70 shadow-sm dark:border-stone-800/90 dark:bg-stone-950/50 dark:shadow-none">
+            <div className="border-l-2 border-teal-500/70 dark:border-teal-500/50">
               <ol className="divide-y divide-slate-200/80 dark:divide-slate-800/80">
                 {technologyCategories.map((cat, i) => {
                   const groupGridClass =
@@ -83,7 +84,7 @@ export async function TechnologiesSection() {
                         <span className="font-mono text-[11px] font-medium tabular-nums text-slate-400 dark:text-slate-500">
                           {String(i + 1).padStart(2, "0")}
                         </span>
-                        <h3 className="text-[11px] font-semibold uppercase leading-snug tracking-[0.18em] text-indigo-700 dark:text-indigo-400">
+                        <h3 className="text-[11px] font-semibold uppercase leading-snug tracking-[0.18em] text-teal-700 dark:text-teal-400">
                           {tCat(cat.id)}
                         </h3>
                       </div>
@@ -100,38 +101,32 @@ export async function TechnologiesSection() {
                                   {tGroup(g.subgroupId)}
                                 </p>
                                 <ul className="mt-3 flex flex-wrap gap-1.5">
-                                  {g.items.map((item) => {
-                                    const tip = techTooltip(item);
-                                    return (
-                                      <li key={item}>
-                                        <span
-                                          className={`${chipBaseClass}${tip ? " cursor-help" : ""}`}
-                                          title={tip}
-                                        >
-                                          {item}
-                                        </span>
-                                      </li>
-                                    );
-                                  })}
+                                  {g.items.map((item) => (
+                                    <li key={item}>
+                                      <TechnologyChip
+                                        label={item}
+                                        chipClassName={chipBaseClass}
+                                        projects={techProjects(item)}
+                                        intro={tooltipIntro}
+                                      />
+                                    </li>
+                                  ))}
                                 </ul>
                               </div>
                             ))}
                           </div>
                         ) : (
                           <ul className="flex flex-wrap gap-1.5">
-                            {cat.items.map((item) => {
-                              const tip = techTooltip(item);
-                              return (
-                                <li key={item}>
-                                  <span
-                                    className={`${chipBaseClass}${tip ? " cursor-help" : ""}`}
-                                    title={tip}
-                                  >
-                                    {item}
-                                  </span>
-                                </li>
-                              );
-                            })}
+                            {cat.items.map((item) => (
+                              <li key={item}>
+                                <TechnologyChip
+                                  label={item}
+                                  chipClassName={chipBaseClass}
+                                  projects={techProjects(item)}
+                                  intro={tooltipIntro}
+                                />
+                              </li>
+                            ))}
                           </ul>
                         )}
                       </div>

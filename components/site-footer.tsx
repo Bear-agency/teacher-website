@@ -5,10 +5,10 @@ import { siteMeta } from "@/lib/constants";
 import { PAGE_SECTION_ITEMS } from "@/lib/page-nav";
 
 const navLinkClass =
-  "text-sm text-slate-500 transition hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400";
+  "text-sm text-stone-400 transition hover:text-teal-400 dark:text-stone-500 dark:hover:text-teal-300";
 
 const iconLinkClass =
-  "inline-flex size-9 items-center justify-center rounded-lg border border-slate-700/80 text-slate-400 transition hover:border-indigo-500/50 hover:text-indigo-300";
+  "inline-flex size-9 items-center justify-center rounded-lg border border-stone-600/90 text-stone-400 transition hover:border-teal-500/60 hover:bg-stone-800/50 hover:text-teal-300";
 
 export async function SiteFooter() {
   const year = new Date().getFullYear();
@@ -18,7 +18,7 @@ export async function SiteFooter() {
 
   return (
     <footer
-      className="border-t border-slate-200/80 bg-slate-900 text-slate-300 dark:border-slate-800 dark:bg-slate-950"
+      className="border-t border-stone-200/80 bg-stone-950 text-stone-300 dark:border-stone-800/90"
       aria-labelledby="footer-heading"
     >
       <div className="mx-auto max-w-7xl px-6 pb-[max(6rem,env(safe-area-inset-bottom))] pt-14 sm:px-8 sm:pb-24 sm:pt-16">
@@ -29,11 +29,11 @@ export async function SiteFooter() {
             </p>
             <Link
               href="/"
-              className="text-lg font-semibold tracking-tight text-white"
+              className="font-serif text-lg font-semibold tracking-tight text-white"
             >
               {siteMeta.name}
             </Link>
-            <p className="mt-2 max-w-sm text-sm leading-relaxed text-slate-400">
+            <p className="mt-2 max-w-sm text-sm leading-relaxed text-stone-400">
               {tHero("role")}
             </p>
           </div>
@@ -82,13 +82,13 @@ export async function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-2 border-t border-slate-800 pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-slate-500">
+        <div className="mt-12 flex flex-col gap-2 border-t border-stone-800/90 pt-8 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs text-stone-500">
             {tFooter("rights", { year, name: siteMeta.name })}
           </p>
           <a
             href={`mailto:${siteMeta.email}`}
-            className="text-xs text-slate-600 hover:text-indigo-300 sm:text-end"
+            className="text-xs text-stone-500 transition hover:text-teal-400 sm:text-end"
           >
             {siteMeta.email}
           </a>

@@ -23,7 +23,7 @@ export function LanguageSwitcher() {
             onClick={() => router.replace(pathname, { locale: loc })}
             className={`rounded-lg px-2 py-1 text-[11px] font-semibold uppercase tracking-wide transition ${
               isActive
-                ? "bg-indigo-500/15 text-indigo-800 dark:bg-indigo-500/25 dark:text-indigo-200"
+                ? "bg-teal-500/15 text-teal-800 dark:bg-teal-500/25 dark:text-teal-200"
                 : "text-slate-500 hover:bg-slate-100 hover:text-slate-800 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200"
             }`}
             aria-current={isActive ? "true" : undefined}
