@@ -49,6 +49,17 @@ export const technologyCategories: TechnologyCategoryEntry[] = [
           "Amazon SQS & SNS",
         ],
       },
+      {
+        subgroupId: "ai",
+        items: [
+          "LLM APIs (OpenAI, Anthropic, Azure OpenAI)",
+          "RAG & document / structured extraction pipelines",
+          "Embeddings, chunking & relevance tuning",
+          "Prompt design, evals & guardrails for production",
+          "Tool-calling & agentic workflows (where appropriate)",
+          "AI-assisted engineering (ChatGPT, Claude, Cursor)",
+        ],
+      },
     ],
   },
   {
@@ -63,6 +74,7 @@ export const technologyCategories: TechnologyCategoryEntry[] = [
           "Redis",
           "Firebase / Firestore",
           "Prisma",
+          "Vector search (e.g. pgvector, managed vector DBs)",
           "Schema design & query tuning",
         ],
       },

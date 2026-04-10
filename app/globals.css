@@ -23,6 +23,10 @@ body {
   color: var(--foreground);
 }
 
+a[href] {
+  cursor: pointer;
+}
+
 ::selection {
   background-color: rgb(99 102 241 / 0.35);
 }

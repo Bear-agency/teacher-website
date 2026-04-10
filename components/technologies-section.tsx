@@ -1,6 +1,10 @@
 import { Cpu } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { technologyCategories } from "@/lib/constants";
+import {
+  buildTechProjectSources,
+  findExampleProjectLabel,
+} from "@/lib/tech-project-hints";
 import type {
   TechnologyCategoryEntry,
   TechnologyCategoryGrouped,
@@ -13,10 +17,26 @@ function isGrouped(
   return "groups" in cat;
 }
 
+const chipBaseClass =
+  "inline-flex rounded-md border border-slate-200/90 bg-white/80 px-2.5 py-1 text-xs font-medium text-slate-700 dark:border-slate-700/90 dark:bg-slate-900/60 dark:text-slate-300";
+
 export async function TechnologiesSection() {
   const t = await getTranslations("TechnologiesSection");
   const tCat = await getTranslations("TechCategories");
   const tGroup = await getTranslations("TechGroups");
+  const tCourseworks = await getTranslations("Courseworks");
+  const tProjects = await getTranslations("Projects");
+
+  const projectSources = buildTechProjectSources({
+    courseworkTitle: (slug) => tCourseworks(`items.${slug}.title`),
+    personalTitle: (id) => tProjects(`items.${id}.title`),
+  });
+
+  function techTooltip(item: string): string | undefined {
+    const project = findExampleProjectLabel(item, projectSources);
+    if (!project) return undefined;
+    return t("projectTooltip", { project });
+  }
 
   return (
     <section
@@ -80,26 +100,38 @@ export async function TechnologiesSection() {
                                   {tGroup(g.subgroupId)}
                                 </p>
                                 <ul className="mt-3 flex flex-wrap gap-1.5">
-                                  {g.items.map((item) => (
-                                    <li key={item}>
-                                      <span className="inline-flex rounded-md border border-slate-200/90 bg-white/80 px-2.5 py-1 text-xs font-medium text-slate-700 dark:border-slate-700/90 dark:bg-slate-900/60 dark:text-slate-300">
-                                        {item}
-                                      </span>
-                                    </li>
-                                  ))}
+                                  {g.items.map((item) => {
+                                    const tip = techTooltip(item);
+                                    return (
+                                      <li key={item}>
+                                        <span
+                                          className={`${chipBaseClass}${tip ? " cursor-help" : ""}`}
+                                          title={tip}
+                                        >
+                                          {item}
+                                        </span>
+                                      </li>
+                                    );
+                                  })}
                                 </ul>
                               </div>
                             ))}
                           </div>
                         ) : (
                           <ul className="flex flex-wrap gap-1.5">
-                            {cat.items.map((item) => (
-                              <li key={item}>
-                                <span className="inline-flex rounded-md border border-slate-200/90 bg-white/80 px-2.5 py-1 text-xs font-medium text-slate-700 dark:border-slate-700/90 dark:bg-slate-900/60 dark:text-slate-300">
-                                  {item}
-                                </span>
-                              </li>
-                            ))}
+                            {cat.items.map((item) => {
+                              const tip = techTooltip(item);
+                              return (
+                                <li key={item}>
+                                  <span
+                                    className={`${chipBaseClass}${tip ? " cursor-help" : ""}`}
+                                    title={tip}
+                                  >
+                                    {item}
+                                  </span>
+                                </li>
+                              );
+                            })}
                           </ul>
                         )}
                       </div>

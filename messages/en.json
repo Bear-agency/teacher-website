@@ -61,6 +61,7 @@
   "TechGroups": {
     "ui": "UI & client",
     "services": "APIs & services",
+    "ai": "AI & LLMs",
     "databases": "Databases & caches",
     "platform": "Cloud & delivery",
     "architecture": "Architecture & patterns",
@@ -69,7 +70,8 @@
   },
   "TechnologiesSection": {
     "heading": "Technologies",
-    "lead": "Tools and stacks I teach against and ship with—grouped for quick scanning. Edit lists in lib/constants.ts."
+    "lead": "Tools and stacks I teach against and ship with—grouped for quick scanning. Edit lists in lib/constants.ts.",
+    "projectTooltip": "Used in: {project}"
   },
   "Subjects": {
     "heading": "Core teaching areas",
