@@ -1,8 +1,34 @@
 "use client";
 
+import { useLocale } from "next-intl";
 import { useId } from "react";
 import { Link } from "@/i18n/navigation";
 import type { TechTooltipMatch } from "@/lib/tech-project-hints";
+
+/** next-intl `Link` often drops or ignores hash on client nav — native `<a>` reliably fires `hashchange`. */
+function TooltipMatchLink({
+  href,
+  className,
+  children,
+}: {
+  href: TechTooltipMatch["href"];
+  className: string;
+  children: React.ReactNode;
+}) {
+  const locale = useLocale();
+  if (href.pathname === "/" && href.hash) {
+    return (
+      <a href={`/${locale}#${href.hash}`} className={className}>
+        {children}
+      </a>
+    );
+  }
+  return (
+    <Link prefetch={false} href={href} className={className}>
+      {children}
+    </Link>
+  );
+}
 
 type TechnologyChipProps = {
   label: string;
@@ -62,13 +88,12 @@ export function TechnologyChip({
                 <p className="mt-1 line-clamp-4 text-[11px] leading-relaxed text-stone-600 dark:text-stone-400">
                   {m.description}
                 </p>
-                <Link
-                  prefetch={false}
+                <TooltipMatchLink
                   href={m.href}
                   className="mt-2 inline-flex text-[11px] font-medium text-teal-700 underline decoration-teal-700/30 underline-offset-2 transition hover:decoration-teal-600 dark:text-teal-400 dark:decoration-teal-400/40 dark:hover:text-teal-300"
                 >
                   {m.linkLabel}
-                </Link>
+                </TooltipMatchLink>
               </li>
             ))}
           </ul>

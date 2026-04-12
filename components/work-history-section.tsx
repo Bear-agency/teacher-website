@@ -124,17 +124,25 @@ export function WorkHistorySection() {
         next.add(yearToOpen);
         return next;
       });
-      window.setTimeout(() => {
+
+      const scrollToCard = () => {
         document.getElementById(hash)?.scrollIntoView({
           behavior: "smooth",
           block: "center",
         });
-      }, 380);
+      };
+      // Year panel animation ~350ms; scroll once then retry so the card is in the layout
+      window.setTimeout(scrollToCard, 480);
+      window.setTimeout(scrollToCard, 900);
     };
 
     applyExperienceHash();
     window.addEventListener("hashchange", applyExperienceHash);
-    return () => window.removeEventListener("hashchange", applyExperienceHash);
+    window.addEventListener("popstate", applyExperienceHash);
+    return () => {
+      window.removeEventListener("hashchange", applyExperienceHash);
+      window.removeEventListener("popstate", applyExperienceHash);
+    };
   }, []);
 
   const expandAll = useCallback(() => {
