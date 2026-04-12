@@ -1,7 +1,6 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { useId } from "react";
 import { Link } from "@/i18n/navigation";
 import type { TechTooltipMatch } from "@/lib/tech-project-hints";
 
@@ -39,8 +38,8 @@ type TechnologyChipProps = {
 };
 
 /**
- * Tech tag with a hover/focus panel: where it was used, short blurb, link to that place on the site.
- * Chip + bridge + panel share one `group` hover zone so the pointer can reach links without the menu closing.
+ * Tech tag with a hover-only panel (not click/focus): where it was used, blurb, links.
+ * Chip + bridge + panel share one `group` hover zone so the pointer can reach links.
  */
 export function TechnologyChip({
   label,
@@ -48,29 +47,20 @@ export function TechnologyChip({
   matches,
   intro,
 }: TechnologyChipProps) {
-  const tipId = useId();
-
   if (matches.length === 0) {
     return <span className={chipClassName}>{label}</span>;
   }
 
   return (
-    <span className="group/chip relative z-0 inline-flex w-max max-w-full hover:z-[80] focus-within:z-[80]">
-      <span
-        className={`${chipClassName} cursor-help`}
-        tabIndex={0}
-        aria-describedby={tipId}
-      >
-        {label}
-      </span>
+    <span className="group/chip relative z-0 inline-flex w-max max-w-full hover:z-[80]">
+      <span className={`${chipClassName} cursor-help select-none`}>{label}</span>
       {/* Column under chip: invisible bridge (no gap) + panel — all inside group so hover is preserved */}
       <div
-        className="pointer-events-none absolute left-1/2 top-full z-[200] flex w-max max-w-[min(22rem,calc(100vw-1.25rem))] -translate-x-1/2 flex-col items-stretch opacity-0 transition-opacity duration-150 group-hover/chip:pointer-events-auto group-hover/chip:opacity-100 group-focus-within/chip:pointer-events-auto group-focus-within/chip:opacity-100"
+        className="pointer-events-none absolute left-1/2 top-full z-[200] flex w-max max-w-[min(22rem,calc(100vw-1.25rem))] -translate-x-1/2 flex-col items-stretch opacity-0 transition-opacity duration-150 group-hover/chip:pointer-events-auto group-hover/chip:opacity-100"
       >
         <div className="h-2.5 shrink-0" aria-hidden />
         <div
           role="tooltip"
-          id={tipId}
           className="rounded-xl border border-stone-200/95 bg-white px-3 py-3 text-left shadow-xl shadow-stone-900/15 ring-1 ring-black/[0.04] dark:border-stone-600/90 dark:bg-stone-900 dark:shadow-black/50 dark:ring-white/[0.06]"
         >
           <span className="block text-[10px] font-semibold uppercase tracking-[0.06em] text-stone-500 dark:text-stone-400">
