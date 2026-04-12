@@ -1,18 +1,21 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import type { TechTooltipMatch } from "@/lib/tech-project-hints";
+import type {
+  TechTooltipMatch,
+  TechTooltipSectionLink,
+} from "@/lib/tech-project-hints";
 
-/** next-intl `Link` often drops or ignores hash on client nav — native `<a>` reliably fires `hashchange`. */
-function TooltipMatchLink({
+function TooltipNavLink({
   href,
   className,
   children,
 }: {
-  href: TechTooltipMatch["href"];
+  href: { pathname: string; hash?: string };
   className: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   const locale = useLocale();
   if (href.pathname === "/" && href.hash) {
@@ -33,28 +36,34 @@ type TechnologyChipProps = {
   label: string;
   chipClassName: string;
   matches: TechTooltipMatch[];
-  /** Heading above the list, e.g. “Used in:” */
-  intro: string;
+  /** Heading when at least one project row matches */
+  matchedIntro: string;
+  /** Heading when nothing matched the site data */
+  emptyIntro: string;
+  emptyBody: string;
+  emptyLinks: TechTooltipSectionLink[];
 };
 
+const linkClass =
+  "inline-flex text-[11px] font-medium text-teal-700 underline decoration-teal-700/30 underline-offset-2 transition hover:decoration-teal-600 dark:text-teal-400 dark:decoration-teal-400/40 dark:hover:text-teal-300";
+
 /**
- * Tech tag with a hover-only panel (not click/focus): where it was used, blurb, links.
- * Chip + bridge + panel share one `group` hover zone so the pointer can reach links.
+ * Hover-only panel for every technology chip: matched projects with links, or fallback section links.
  */
 export function TechnologyChip({
   label,
   chipClassName,
   matches,
-  intro,
+  matchedIntro,
+  emptyIntro,
+  emptyBody,
+  emptyLinks,
 }: TechnologyChipProps) {
-  if (matches.length === 0) {
-    return <span className={chipClassName}>{label}</span>;
-  }
+  const hasMatches = matches.length > 0;
 
   return (
     <span className="group/chip relative z-0 inline-flex w-max max-w-full hover:z-[80]">
       <span className={`${chipClassName} cursor-help select-none`}>{label}</span>
-      {/* Column under chip: invisible bridge (no gap) + panel — all inside group so hover is preserved */}
       <div
         className="pointer-events-none absolute left-1/2 top-full z-[200] flex w-max max-w-[min(22rem,calc(100vw-1.25rem))] -translate-x-1/2 flex-col items-stretch opacity-0 transition-opacity duration-150 group-hover/chip:pointer-events-auto group-hover/chip:opacity-100"
       >
@@ -64,29 +73,44 @@ export function TechnologyChip({
           className="rounded-xl border border-stone-200/95 bg-white px-3 py-3 text-left shadow-xl shadow-stone-900/15 ring-1 ring-black/[0.04] dark:border-stone-600/90 dark:bg-stone-900 dark:shadow-black/50 dark:ring-white/[0.06]"
         >
           <span className="block text-[10px] font-semibold uppercase tracking-[0.06em] text-stone-500 dark:text-stone-400">
-            {intro}
+            {hasMatches ? matchedIntro : emptyIntro}
           </span>
-          <ul className="mt-2 max-h-56 space-y-3 overflow-y-auto overscroll-contain pr-0.5">
-            {matches.map((m) => (
-              <li
-                key={m.key}
-                className="border-b border-stone-100 pb-3 last:border-0 last:pb-0 dark:border-stone-700/80"
-              >
-                <p className="text-[12px] font-semibold leading-snug text-stone-900 dark:text-stone-100">
-                  {m.title}
-                </p>
-                <p className="mt-1 line-clamp-4 text-[11px] leading-relaxed text-stone-600 dark:text-stone-400">
-                  {m.description}
-                </p>
-                <TooltipMatchLink
-                  href={m.href}
-                  className="mt-2 inline-flex text-[11px] font-medium text-teal-700 underline decoration-teal-700/30 underline-offset-2 transition hover:decoration-teal-600 dark:text-teal-400 dark:decoration-teal-400/40 dark:hover:text-teal-300"
+
+          {hasMatches ? (
+            <ul className="mt-2 max-h-56 space-y-3 overflow-y-auto overscroll-contain pr-0.5">
+              {matches.map((m) => (
+                <li
+                  key={m.key}
+                  className="border-b border-stone-100 pb-3 last:border-0 last:pb-0 dark:border-stone-700/80"
                 >
-                  {m.linkLabel}
-                </TooltipMatchLink>
-              </li>
-            ))}
-          </ul>
+                  <p className="text-[12px] font-semibold leading-snug text-stone-900 dark:text-stone-100">
+                    {m.title}
+                  </p>
+                  <p className="mt-1 line-clamp-4 text-[11px] leading-relaxed text-stone-600 dark:text-stone-400">
+                    {m.description}
+                  </p>
+                  <TooltipNavLink href={m.href} className={`mt-2 ${linkClass}`}>
+                    {m.linkLabel}
+                  </TooltipNavLink>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <div className="mt-2 space-y-2">
+              <p className="text-[11px] leading-relaxed text-stone-600 dark:text-stone-400">
+                {emptyBody}
+              </p>
+              <ul className="flex flex-col gap-1.5">
+                {emptyLinks.map((l) => (
+                  <li key={l.label}>
+                    <TooltipNavLink href={l.href} className={linkClass}>
+                      {l.label}
+                    </TooltipNavLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </span>

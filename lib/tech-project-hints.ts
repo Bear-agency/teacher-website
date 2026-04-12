@@ -21,6 +21,12 @@ export type TechTooltipMatch = {
   linkLabel: string;
 };
 
+/** In-page section shortcuts when no employer/coursework/personal row matches */
+export type TechTooltipSectionLink = {
+  label: string;
+  href: { pathname: string; hash?: string };
+};
+
 function norm(s: string): string {
   return s.trim().toLowerCase().replace(/\s+/g, " ");
 }
@@ -95,6 +101,17 @@ export function stackEntryMatchesChip(
 
   if (cPri === "sql") {
     return sFull === "sql" || sPri === "sql";
+  }
+
+  if (cPri === "python" && (sFull.startsWith("python") || sPri.startsWith("python")))
+    return true;
+
+  if (
+    cFull.includes("atlassian") &&
+    cFull.includes("jira") &&
+    (sFull.includes("jira") || sFull.includes("atlassian"))
+  ) {
+    return true;
   }
 
   return false;

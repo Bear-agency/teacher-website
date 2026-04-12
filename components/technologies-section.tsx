@@ -46,6 +46,13 @@ export async function TechnologiesSection() {
     personal: t("tooltipLinkProject"),
   };
 
+  const emptyLinks = [
+    { label: t("tooltipEmptyLinkExperience"), href: { pathname: "/", hash: "experience" } },
+    { label: t("tooltipEmptyLinkCourseworks"), href: { pathname: "/", hash: "courseworks" } },
+    { label: t("tooltipEmptyLinkProjects"), href: { pathname: "/", hash: "projects" } },
+    { label: t("tooltipEmptyLinkSubjects"), href: { pathname: "/", hash: "subjects" } },
+  ] as const;
+
   function techMatches(item: string) {
     return findMatchingTechTooltips(item, richSources, tooltipLinks);
   }
@@ -118,7 +125,10 @@ export async function TechnologiesSection() {
                                         label={item}
                                         chipClassName={chipBaseClass}
                                         matches={techMatches(item)}
-                                        intro={tooltipIntro}
+                                        matchedIntro={tooltipIntro}
+                                        emptyIntro={t("tooltipEmptyIntro")}
+                                        emptyBody={t("tooltipEmptyBody")}
+                                        emptyLinks={[...emptyLinks]}
                                       />
                                     </li>
                                   ))}
@@ -134,7 +144,10 @@ export async function TechnologiesSection() {
                                   label={item}
                                   chipClassName={chipBaseClass}
                                   matches={techMatches(item)}
-                                  intro={tooltipIntro}
+                                  matchedIntro={tooltipIntro}
+                                  emptyIntro={t("tooltipEmptyIntro")}
+                                  emptyBody={t("tooltipEmptyBody")}
+                                  emptyLinks={[...emptyLinks]}
                                 />
                               </li>
                             ))}

@@ -78,7 +78,13 @@
     "projectsTooltipIntro": "Де використовується:",
     "tooltipLinkWork": "Перейти до досвіду",
     "tooltipLinkCoursework": "Відкрити курсову сторінку",
-    "tooltipLinkProject": "Перейти до проєктів"
+    "tooltipLinkProject": "Перейти до проєктів",
+    "tooltipEmptyIntro": "Переглянути на сайті",
+    "tooltipEmptyBody": "Цей тег ще не прив’язаний до конкретного роботодавця, курсової чи особистого проєкту в даних сайту. Перейдіть у розділ нижче, щоб знайти пов’язаний матеріал.",
+    "tooltipEmptyLinkExperience": "Досвід і освіта",
+    "tooltipEmptyLinkCourseworks": "Курсові проєкти",
+    "tooltipEmptyLinkProjects": "Особисті проєкти",
+    "tooltipEmptyLinkSubjects": "Фокус викладання"
   },
   "Subjects": {
     "heading": "Ключові напрями викладання",

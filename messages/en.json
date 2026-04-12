@@ -78,7 +78,13 @@
     "projectsTooltipIntro": "Used in:",
     "tooltipLinkWork": "View in experience",
     "tooltipLinkCoursework": "Open coursework",
-    "tooltipLinkProject": "View in projects"
+    "tooltipLinkProject": "View in projects",
+    "tooltipEmptyIntro": "Browse on this site",
+    "tooltipEmptyBody": "This tag is not linked to a specific employer, coursework, or personal project row in the data yet. Jump to a section below to explore related material.",
+    "tooltipEmptyLinkExperience": "Experience & education",
+    "tooltipEmptyLinkCourseworks": "Courseworks",
+    "tooltipEmptyLinkProjects": "Personal projects",
+    "tooltipEmptyLinkSubjects": "Teaching focus"
   },
   "Subjects": {
     "heading": "Core teaching areas",
