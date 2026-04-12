@@ -75,7 +75,10 @@
   "TechnologiesSection": {
     "heading": "Technologies",
     "lead": "Stacks from real delivery work and from what I assign in coursework—grouped so you can scan without marketing fluff.",
-    "projectsTooltipIntro": "Used in:"
+    "projectsTooltipIntro": "Used in:",
+    "tooltipLinkWork": "View in experience",
+    "tooltipLinkCoursework": "Open coursework",
+    "tooltipLinkProject": "View in projects"
   },
   "Subjects": {
     "heading": "Core teaching areas",

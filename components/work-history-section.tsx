@@ -3,14 +3,18 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronRight, GraduationCap, TreeDeciduous } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useCallback, useId, useMemo, useState } from "react";
+import { useCallback, useEffect, useId, useMemo, useState } from "react";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { siteMeta } from "@/lib/constants";
 import {
   educationHistory,
   languageSkills,
+  workHistory,
 } from "@/lib/work-history-data";
-import { groupWorkByYearDescending } from "@/lib/work-history";
+import {
+  activeCalendarYears,
+  groupWorkByYearDescending,
+} from "@/lib/work-history";
 import type { WorkHistoryEntry } from "@/lib/types";
 
 function EntryCard({ entry }: { entry: WorkHistoryEntry }) {
@@ -20,7 +24,10 @@ function EntryCard({ entry }: { entry: WorkHistoryEntry }) {
   const extraAccomplishments = entry.accomplishments;
 
   return (
-    <article className="rounded-xl border border-slate-200/90 bg-transparent p-5 shadow-sm dark:border-slate-700">
+    <article
+      id={`experience-${entry.id}`}
+      className="scroll-mt-36 rounded-xl border border-slate-200/90 bg-transparent p-5 shadow-sm dark:border-slate-700"
+    >
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h3 className="text-base font-semibold text-slate-900 dark:text-white">
           {entry.company}
@@ -101,6 +108,33 @@ export function WorkHistorySection() {
       else next.add(year);
       return next;
     });
+  }, []);
+
+  useEffect(() => {
+    const applyExperienceHash = () => {
+      const hash = window.location.hash.replace(/^#/, "");
+      if (!hash.startsWith("experience-")) return;
+      const entryId = hash.slice("experience-".length);
+      const entry = workHistory.find((e) => e.id === entryId);
+      if (!entry) return;
+      const years = activeCalendarYears(entry);
+      const yearToOpen = Math.max(...years);
+      setOpenYears((prev) => {
+        const next = new Set(prev);
+        next.add(yearToOpen);
+        return next;
+      });
+      window.setTimeout(() => {
+        document.getElementById(hash)?.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }, 380);
+    };
+
+    applyExperienceHash();
+    window.addEventListener("hashchange", applyExperienceHash);
+    return () => window.removeEventListener("hashchange", applyExperienceHash);
   }, []);
 
   const expandAll = useCallback(() => {

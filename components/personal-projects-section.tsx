@@ -1,5 +1,6 @@
 import { ExternalLink, FolderCode } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+import { ProjectHashScroll } from "@/components/project-hash-scroll";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { getPersonalProjects } from "@/lib/personal-projects";
 
@@ -13,6 +14,7 @@ export async function PersonalProjectsSection() {
       className="border-t border-slate-200/80 py-20 dark:border-slate-800/80 sm:py-24"
       aria-labelledby="projects-heading"
     >
+      <ProjectHashScroll />
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
         <ScrollReveal>
           <div className="flex flex-wrap items-start gap-4">
@@ -37,7 +39,10 @@ export async function PersonalProjectsSection() {
           {personalProjects.map((project, i) => (
             <ScrollReveal key={project.id} delay={0.06 * i}>
               <li>
-                <article className="flex h-full flex-col rounded-2xl border border-slate-200/90 bg-transparent p-6 shadow-sm dark:border-slate-800">
+                <article
+                  id={`project-${project.id}`}
+                  className="scroll-mt-36 flex h-full flex-col rounded-2xl border border-slate-200/90 bg-transparent p-6 shadow-sm dark:border-slate-800"
+                >
                   <h3 className="text-lg font-semibold tracking-tight text-slate-900 dark:text-white">
                     {project.title}
                   </h3>

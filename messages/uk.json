@@ -75,7 +75,10 @@
   "TechnologiesSection": {
     "heading": "Технології",
     "lead": "Стеки з реальної поставки та з курсових завдань — згруповано для швидкого перегляду без маркетингових формулювань.",
-    "projectsTooltipIntro": "Де використовується:"
+    "projectsTooltipIntro": "Де використовується:",
+    "tooltipLinkWork": "Перейти до досвіду",
+    "tooltipLinkCoursework": "Відкрити курсову сторінку",
+    "tooltipLinkProject": "Перейти до проєктів"
   },
   "Subjects": {
     "heading": "Ключові напрями викладання",

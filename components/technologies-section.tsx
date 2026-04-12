@@ -2,8 +2,8 @@ import { Cpu } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { technologyCategories } from "@/lib/constants";
 import {
-  buildTechProjectSources,
-  findMatchingProjectLabels,
+  buildRichTechProjectSources,
+  findMatchingTechTooltips,
 } from "@/lib/tech-project-hints";
 import type {
   TechnologyCategoryEntry,
@@ -28,15 +28,26 @@ export async function TechnologiesSection() {
   const tCourseworks = await getTranslations("Courseworks");
   const tProjects = await getTranslations("Projects");
 
-  const projectSources = buildTechProjectSources({
-    courseworkTitle: (slug) => tCourseworks(`items.${slug}.title`),
-    personalTitle: (id) => tProjects(`items.${id}.title`),
+  const richSources = buildRichTechProjectSources({
+    coursework: (slug) => ({
+      title: tCourseworks(`items.${slug}.title`),
+      excerpt: tCourseworks(`items.${slug}.excerpt`),
+    }),
+    personal: (id) => ({
+      title: tProjects(`items.${id}.title`),
+      description: tProjects(`items.${id}.description`),
+    }),
   });
 
   const tooltipIntro = t("projectsTooltipIntro");
+  const tooltipLinks = {
+    work: t("tooltipLinkWork"),
+    coursework: t("tooltipLinkCoursework"),
+    personal: t("tooltipLinkProject"),
+  };
 
-  function techProjects(item: string): string[] {
-    return findMatchingProjectLabels(item, projectSources);
+  function techMatches(item: string) {
+    return findMatchingTechTooltips(item, richSources, tooltipLinks);
   }
 
   return (
@@ -106,7 +117,7 @@ export async function TechnologiesSection() {
                                       <TechnologyChip
                                         label={item}
                                         chipClassName={chipBaseClass}
-                                        projects={techProjects(item)}
+                                        matches={techMatches(item)}
                                         intro={tooltipIntro}
                                       />
                                     </li>
@@ -122,7 +133,7 @@ export async function TechnologiesSection() {
                                 <TechnologyChip
                                   label={item}
                                   chipClassName={chipBaseClass}
-                                  projects={techProjects(item)}
+                                  matches={techMatches(item)}
                                   intro={tooltipIntro}
                                 />
                               </li>

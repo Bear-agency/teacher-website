@@ -1,10 +1,24 @@
 import { courseworkRegistry, personalProjectRegistry } from "./constants";
 import { workHistory } from "./work-history-data";
 
-export type TechProjectSource = {
-  /** Shown in the tooltip (company, coursework title, or project title) */
-  label: string;
+export type TechTooltipKind = "work" | "coursework" | "personal";
+
+export type RichTechSource = {
+  kind: TechTooltipKind;
+  id: string;
+  title: string;
+  description: string;
   stack: string[];
+};
+
+/** Serializable for passing from Server → Client Component */
+export type TechTooltipMatch = {
+  key: string;
+  kind: TechTooltipKind;
+  title: string;
+  description: string;
+  href: { pathname: string; hash?: string };
+  linkLabel: string;
 };
 
 function norm(s: string): string {
@@ -86,45 +100,94 @@ export function stackEntryMatchesChip(
   return false;
 }
 
-export function buildTechProjectSources(options: {
-  courseworkTitle: (slug: string) => string;
-  personalTitle: (id: string) => string;
-}): TechProjectSource[] {
-  const fromWork: TechProjectSource[] = workHistory.map((w) => ({
-    label: w.company,
+export function buildRichTechProjectSources(options: {
+  coursework: (slug: string) => { title: string; excerpt: string };
+  personal: (id: string) => { title: string; description: string };
+}): RichTechSource[] {
+  const fromWork: RichTechSource[] = workHistory.map((w) => ({
+    kind: "work",
+    id: w.id,
+    title: w.company,
+    description: (w.domain ?? w.role).trim(),
     stack: w.techStack ?? [],
   }));
 
-  const fromCoursework: TechProjectSource[] = courseworkRegistry.map((c) => ({
-    label: options.courseworkTitle(c.slug),
-    stack: c.techStack,
-  }));
+  const fromCoursework: RichTechSource[] = courseworkRegistry.map((c) => {
+    const meta = options.coursework(c.slug);
+    return {
+      kind: "coursework",
+      id: c.slug,
+      title: meta.title,
+      description: meta.excerpt.trim(),
+      stack: c.techStack,
+    };
+  });
 
-  const fromPersonal: TechProjectSource[] = personalProjectRegistry.map(
-    (p) => ({
-      label: options.personalTitle(p.id),
+  const fromPersonal: RichTechSource[] = personalProjectRegistry.map((p) => {
+    const meta = options.personal(p.id);
+    return {
+      kind: "personal",
+      id: p.id,
+      title: meta.title,
+      description: meta.description.trim(),
       stack: p.stack ?? [],
-    })
-  );
+    };
+  });
 
   return [...fromWork, ...fromCoursework, ...fromPersonal];
 }
 
-/** All distinct projects (work, coursework, personal) that list this technology, in source order */
-export function findMatchingProjectLabels(
+const DESC_MAX = 240;
+
+function clipDescription(text: string): string {
+  const t = text.replace(/\s+/g, " ").trim();
+  if (t.length <= DESC_MAX) return t;
+  return `${t.slice(0, DESC_MAX - 1)}…`;
+}
+
+export function findMatchingTechTooltips(
   techDisplayLabel: string,
-  sources: TechProjectSource[]
-): string[] {
+  sources: RichTechSource[],
+  linkLabels: { work: string; coursework: string; personal: string }
+): TechTooltipMatch[] {
   const seen = new Set<string>();
-  const out: string[] = [];
+  const out: TechTooltipMatch[] = [];
+
   for (const src of sources) {
     const matched = src.stack.some((entry) =>
       stackEntryMatchesChip(techDisplayLabel, entry)
     );
-    if (matched && !seen.has(src.label)) {
-      seen.add(src.label);
-      out.push(src.label);
+    if (!matched) continue;
+
+    const key = `${src.kind}:${src.id}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+
+    let href: { pathname: string; hash?: string };
+    if (src.kind === "work") {
+      href = { pathname: "/", hash: `experience-${src.id}` };
+    } else if (src.kind === "coursework") {
+      href = { pathname: `/courseworks/${src.id}` };
+    } else {
+      href = { pathname: "/", hash: `project-${src.id}` };
     }
+
+    const linkLabel =
+      src.kind === "work"
+        ? linkLabels.work
+        : src.kind === "coursework"
+          ? linkLabels.coursework
+          : linkLabels.personal;
+
+    out.push({
+      key,
+      kind: src.kind,
+      title: src.title,
+      description: clipDescription(src.description),
+      href,
+      linkLabel,
+    });
   }
+
   return out;
 }
